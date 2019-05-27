@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Java 之 BASE64 加密解密 | 一品烟雨
+      java的三大特性 | 一品烟雨
     
   </title>
   <meta name="author" content="John Doe">
@@ -156,7 +156,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Java 之 BASE64 加密解密》
+			当前文章&nbsp;:&nbsp;《java的三大特性》
 		
 	</p>
 
@@ -233,8 +233,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/05/27/JavaBASE64/" itemprop="url">
-		Java 之 BASE64 加密解密
+	<a href="/2019/05/27/ThreeFeaturesOfJava/" itemprop="url">
+		java的三大特性
 	</a>
 
 	</div>
@@ -247,8 +247,8 @@
 
 	发布于
 
-	<a href="/2019/05/27/JavaBASE64/" itemprop="url">
-		<time datetime="2019-05-27T06:33:14.000Z" itemprop="datePublished">
+	<a href="/2019/05/27/ThreeFeaturesOfJava/" itemprop="url">
+		<time datetime="2019-05-27T09:21:42.000Z" itemprop="datePublished">
 	  		2019-05-27
 	  </time>
 	</a>
@@ -265,8 +265,8 @@
 
 	更新于
 
-	<a href="/2019/05/27/JavaBASE64/" itemprop="url">
-		<time datetime="2019-05-27T06:33:14.000Z" itemprop="dateUpdated">
+	<a href="/2019/05/27/ThreeFeaturesOfJava/" itemprop="url">
+		<time datetime="2019-05-27T09:21:42.000Z" itemprop="dateUpdated">
 	  		2019-05-27
 	  </time>
 	</a> 
@@ -282,6 +282,10 @@
 			java基础
 		</a>
 	
+		<a href="/tags/java特性/" class=" ">
+			java特性
+		</a>
+	
 		
 		</span>
 		
@@ -292,14 +296,22 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h4 id="Java之BASE64加密解密"><a href="#Java之BASE64加密解密" class="headerlink" title="Java之BASE64加密解密"></a>Java之BASE64加密解密</h4><p>&#8195;&#8195;在给邮件发送 URL 链接找回密码时，会发送一个链接，像这样 <code><a href="http://localhost:8080/resetpass?sid=c1b55b980db4eb74a4264a92d53cd953&amp;account=saysky" target="_blank" rel="noopener">http://localhost:8080/resetpass?sid=c1b55b980db4eb74a4264a92d53cd953&amp;account=saysky</a></code>验证原理就是，当用户点击链接，然后请求控制器里的 resetpass 方法，获得 sid(密钥) 和 account(用户名) 两个参数。<br>&#8195;&#8195;根据用户名去数据库中的 “邮件找回密码” 表(mail_retrieve)里寻找记录，获得 mailRetrieve 对象，然后比较 参数中的 sid 和 mailRetrieve.getSid() 即可，当然也可以加一个outtimes 超时时间字段。<br>&#8195;&#8195;如上链接，sid 是经过 MD5 加密，并且无需解密，只需要比较参数dis和数据库sid是否相等，而account用户名一定要传过去，目前是直接明文显示，感觉不是特别好，所以这里需要给 accout 也加密一下比较好。然后在控制器里接受参数的时候，然后在解密即可。 目标是，无需太复杂，肉眼无法识别即可，但求效率高。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sun.misc.BASE64Decoder;</span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Encoder;</span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 言曌</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2018/2/24 上午11:45</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Base64Util</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"restriction"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encode</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] b = <span class="keyword">null</span>;</span><br><span class="line">        String s = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            b = str.getBytes(<span class="string">"utf-8"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (b != <span class="keyword">null</span>) &#123;</span><br><span class="line">            s = <span class="keyword">new</span> BASE64Encoder().encode(b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 解密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"restriction"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decode</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] b = <span class="keyword">null</span>;</span><br><span class="line">        String result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (s != <span class="keyword">null</span>) &#123;</span><br><span class="line">            BASE64Decoder decoder = <span class="keyword">new</span> BASE64Decoder();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                b = decoder.decodeBuffer(s);</span><br><span class="line">                result = <span class="keyword">new</span> String(b, <span class="string">"utf-8"</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Long startTime = System.currentTimeMillis();</span><br><span class="line">        String rawString = <span class="string">"loveluoqi"</span>;</span><br><span class="line">        String encodedString = encode(rawString);</span><br><span class="line">        String decodedString = decode(encodedString);</span><br><span class="line">        System.out.println(rawString);</span><br><span class="line">        System.out.println(encodedString);</span><br><span class="line">        System.out.println(decodedString);</span><br><span class="line">        Long endTime = System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">"总共耗时毫秒数："</span> + (endTime - startTime));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<p>来源：<a href="https://liuyanzhao.com/7578.html" target="_blank" rel="noopener">言曌博客</a></p>
+		<blockquote>
+<p>参考出处：<a href="http://cmsblogs.com/" target="_blank" rel="noopener">http://cmsblogs.com/</a> 『chenssy』</p>
+</blockquote>
+<h3 id="三大特性之封装"><a href="#三大特性之封装" class="headerlink" title="三大特性之封装"></a>三大特性之封装</h3><p>&#8195;&#8195;封装从字面上来理解就是包装的意思，专业点就是信息隐藏，是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系。系统的其他对象只能通过包裹在数据外面的已经授权的操作来与这个封装的对象进行交流和交互。也就是说用户是无需知道对象内部的细节（当然也无从知道），但可以通过该对象对外的提供的接口来访问该对象。<br>&#8195;&#8195;对于封装而言，一个对象它所封装的是自己的属性和方法，所以它是不需要依赖其他对象就可以完成自己的操作。</p>
+<p>使用封装有三大好处：<br>&#8195;&#8195;&#8195;&#8195;1、良好的封装能够减少耦合。<br>&#8195;&#8195;&#8195;&#8195;2、类内部的结构可以自由修改其中的逻辑，不用想其使用。<br>&#8195;&#8195;&#8195;&#8195;3、可以对成员进行更精确的控制。<br>&#8195;&#8195;&#8195;&#8195;4、能够隐藏类信息和实现的细节。</p>
+<p>通俗例子：<br>&#8195;&#8195;一部水果手机需要有三部分组成：屏幕、主板、电池。<br>&#8195;&#8195;无论工厂内部是怎么操作，什么情况，水果公司不需要知道。水果只需要能按时接受到合格的屏幕就可以。</p>
+<h3 id="三大特性之继承"><a href="#三大特性之继承" class="headerlink" title="三大特性之继承"></a>三大特性之继承</h3><p>&#8195;&#8195;在《Think in java》中有这样一句话：复用代码是Java众多引人注目的功能之一。但要想成为极具革命性的语言，仅仅能够复制代码并对加以改变是不够的，它还必须能够做更多的事情。在这句话中最引人注目的是“复用代码”,尽可能的复用代码使我们程序员一直在追求的，现在我来介绍一种复用代码的方式，也是java三大特性之一—继承。</p>
+<p>&#8195;&#8195;同时在使用继承时需要记住三句话：<br>&#8195;&#8195;&#8195;&#8195;1、子类拥有父类非private的属性和方法。<br>&#8195;&#8195;&#8195;&#8195;2、子类可以拥有自己属性和方法，即子类可以对父类进行扩展。<br>&#8195;&#8195;&#8195;&#8195;3、子类可以用自己的方式实现父类的方法。</p>
+<p>&#8195;&#8195;综上所述，使用继承确实有许多的优点，除了将所有子类的共同属性放入父类，实现代码共享，避免重复外，还可以使得修改扩展继承而来的实现比较简单。</p>
+<p>构造器<br>&#8195;&#8195;通过前面我们知道子类可以继承父类的属性和方法，除了那些private的外还有一样是子类继承不了的—构造器。对于构造器而言，它只能够被调用，而不能被继承。 调用父类的构造方法我们使用super()即可。<br>对于子类而已,其构造器的正确初始化是非常重要的,而且当且仅当只有一个方法可以保证这点：在构造器中调用父类构造器来完成初始化，而父类构造器具有执行父类初始化所需要的所有知识和能力。</p>
+<p>首先我们需要明确，继承存在如下缺陷：<br>&#8195;&#8195;父类变，子类就必须变。<br>&#8195;&#8195;继承破坏了封装，对于父类而言，它的实现细节对与子类来说都是透明的。<br>&#8195;&#8195;继承是一种强耦合关系。</p>
+<h3 id="三大特性之多态"><a href="#三大特性之多态" class="headerlink" title="三大特性之多态"></a>三大特性之多态</h3><p>&#8195;&#8195;所谓多态就是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定，即一个引用变量倒底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。因为在程序运行时才确定具体的类，这样，不用修改源程序代码，就可以让引用变量绑定到各种不同的类实现上，从而导致该引用调用的具体方法随之改变，即不修改程序代码就可以改变程序运行时所绑定的具体代码，让程序可以选择多个运行状态，这就是多态性。</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/1.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/Random-img/33.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -314,12 +326,8 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/05/27/ThreeFeaturesOfJava/" title="java的三大特性" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2019/05/21/grammar/" title="markdown的语法" rel="next">
+			<a href="/2019/05/27/JavaBASE64/" title="Java 之 BASE64 加密解密" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -340,25 +348,22 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/05/27/ThreeFeaturesOfJava/" title="java的三大特性">
-								java的三大特性			
+							<a class="relate-post-title" href="/2019/05/27/JavaBASE64/" title="Java 之 BASE64 加密解密">
+								Java 之 BASE64 加密解密			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
 								五月 27日, 2019				
 							</p>
 							<p class="relate-post-content">
-								
-参考出处：http://cmsblogs.com/ 『chenssy』
-
-三大特性之封装&#8195;&#8195;封装从字面上来理解就是包装的意思，专业点就是信息隐藏，是指利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成...
+								Java之BASE64加密解密&#8195;&#8195;在给邮件发送 URL 链接找回密码时，会发送一个链接，像这样 http://localhost:8080/resetpass?sid=c1b55b980db4eb74a4264...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/05/27/ThreeFeaturesOfJava/" title="java的三大特性">				
+							<a href="/2019/05/27/JavaBASE64/" title="Java 之 BASE64 加密解密">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/33.jpg" alt="java的三大特性">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="Java 之 BASE64 加密解密">
 							</a>
 						</div>
 					</li>											
