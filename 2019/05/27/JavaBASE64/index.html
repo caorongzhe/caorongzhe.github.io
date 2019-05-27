@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Hello World | Hexo
+      Java 之 BASE64 加密解密 | 一品烟雨
     
   </title>
   <meta name="author" content="John Doe">
@@ -49,7 +49,7 @@
 
 
 <!-- header -->
-<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="15" data-random-src="/img/Random-img/">
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="40" data-random-src="/img/Random-img/">
 	<div class="mask">
 		<!-- Logo and navigation -->
 		<div class="h-header">
@@ -156,7 +156,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Hello World》
+			当前文章&nbsp;:&nbsp;《Java 之 BASE64 加密解密》
 		
 	</p>
 
@@ -233,8 +233,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/05/24/hello-world/" itemprop="url">
-		Hello World
+	<a href="/2019/05/27/JavaBASE64/" itemprop="url">
+		Java 之 BASE64 加密解密
 	</a>
 
 	</div>
@@ -247,9 +247,9 @@
 
 	发布于
 
-	<a href="/2019/05/24/hello-world/" itemprop="url">
-		<time datetime="2019-05-24T01:39:46.800Z" itemprop="datePublished">
-	  		2019-05-24
+	<a href="/2019/05/27/JavaBASE64/" itemprop="url">
+		<time datetime="2019-05-27T06:33:14.000Z" itemprop="datePublished">
+	  		2019-05-27
 	  </time>
 	</a>
 	&nbsp;
@@ -265,9 +265,9 @@
 
 	更新于
 
-	<a href="/2019/05/24/hello-world/" itemprop="url">
-		<time datetime="2019-05-24T01:39:46.800Z" itemprop="dateUpdated">
-	  		2019-05-24
+	<a href="/2019/05/27/JavaBASE64/" itemprop="url">
+		<time datetime="2019-05-27T06:33:14.000Z" itemprop="dateUpdated">
+	  		2019-05-27
 	  </time>
 	</a> 
 
@@ -276,7 +276,13 @@
 		</span>
 		<span>
 			<i class="fa fa-tags"></i>
-					
+			
+	
+		<a href="/tags/java基础/" class=" ">
+			java基础
+		</a>
+	
+		
 		</span>
 		
 		
@@ -286,19 +292,14 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		<h4 id="Java之BASE64加密解密"><a href="#Java之BASE64加密解密" class="headerlink" title="Java之BASE64加密解密"></a>Java之BASE64加密解密</h4><p>&#8195;&#8195;在给邮件发送 URL 链接找回密码时，会发送一个链接，像这样 <code><a href="http://localhost:8080/resetpass?sid=c1b55b980db4eb74a4264a92d53cd953&amp;account=saysky" target="_blank" rel="noopener">http://localhost:8080/resetpass?sid=c1b55b980db4eb74a4264a92d53cd953&amp;account=saysky</a></code>验证原理就是，当用户点击链接，然后请求控制器里的 resetpass 方法，获得 sid(密钥) 和 account(用户名) 两个参数。<br>&#8195;&#8195;根据用户名去数据库中的 “邮件找回密码” 表(mail_retrieve)里寻找记录，获得 mailRetrieve 对象，然后比较 参数中的 sid 和 mailRetrieve.getSid() 即可，当然也可以加一个outtimes 超时时间字段。<br>&#8195;&#8195;如上链接，sid 是经过 MD5 加密，并且无需解密，只需要比较参数dis和数据库sid是否相等，而account用户名一定要传过去，目前是直接明文显示，感觉不是特别好，所以这里需要给 accout 也加密一下比较好。然后在控制器里接受参数的时候，然后在解密即可。 目标是，无需太复杂，肉眼无法识别即可，但求效率高。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sun.misc.BASE64Decoder;</span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Encoder;</span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 言曌</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2018/2/24 上午11:45</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Base64Util</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"restriction"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encode</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] b = <span class="keyword">null</span>;</span><br><span class="line">        String s = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            b = str.getBytes(<span class="string">"utf-8"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (b != <span class="keyword">null</span>) &#123;</span><br><span class="line">            s = <span class="keyword">new</span> BASE64Encoder().encode(b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 解密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"restriction"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decode</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] b = <span class="keyword">null</span>;</span><br><span class="line">        String result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (s != <span class="keyword">null</span>) &#123;</span><br><span class="line">            BASE64Decoder decoder = <span class="keyword">new</span> BASE64Decoder();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                b = decoder.decodeBuffer(s);</span><br><span class="line">                result = <span class="keyword">new</span> String(b, <span class="string">"utf-8"</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Long startTime = System.currentTimeMillis();</span><br><span class="line">        String rawString = <span class="string">"loveluoqi"</span>;</span><br><span class="line">        String encodedString = encode(rawString);</span><br><span class="line">        String decodedString = decode(encodedString);</span><br><span class="line">        System.out.println(rawString);</span><br><span class="line">        System.out.println(encodedString);</span><br><span class="line">        System.out.println(decodedString);</span><br><span class="line">        Long endTime = System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">"总共耗时毫秒数："</span> + (endTime - startTime));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>来源：<a href="https://liuyanzhao.com/7578.html" target="_blank" rel="noopener">言曌博客</a></p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/1.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -314,7 +315,7 @@
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
 		
-			<a href="/2018/08/27/1/" title="markdown的语法1" rel="next">
+			<a href="/2019/05/21/grammar/" title="markdown的语法" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -335,179 +336,25 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/08/27/1/" title="markdown的语法1">
-								markdown的语法1			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 27日, 2018				
-							</p>
-							<p class="relate-post-content">
-								
-
-
-name
-URL
-
-
-
-
-Google
-
-
-
-YouTube
-YouTube
-
-
-
-
- 未选
- 选中
-
-markdown 基础语法第一级标题 &lt;h1&gt;第二级标题 &lt;h2&gt;第三级标题 &lt;h3&gt;第...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2018/08/27/1/" title="markdown的语法1">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/idea01.jpg" alt="markdown的语法1">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/08/27/2/" title="markdown的语法2">
-								markdown的语法2			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 27日, 2018				
-							</p>
-							<p class="relate-post-content">
-								
-
-
-name
-URL
-
-
-
-
-Google
-
-
-
-YouTube
-YouTube
-
-
-
-
- 未选
- 选中
-
-markdown 基础语法第一级标题 &lt;h1&gt;第二级标题 &lt;h2&gt;第三级标题 &lt;h3&gt;第...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2018/08/27/2/" title="markdown的语法2">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/idea01.jpg" alt="markdown的语法2">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/08/27/grammar/" title="markdown的语法">
+							<a class="relate-post-title" href="/2019/05/21/grammar/" title="markdown的语法">
 								markdown的语法			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 27日, 2018				
+								五月 21日, 2019				
 							</p>
 							<p class="relate-post-content">
-								
+								这是一个写文章的格式案例和markdown的语法，不用点开。你要是点开了，没关系，那就关上呗。哈哈哈 ！！！
+本站部分资源来源于网络，本站转载出于传递更多信息之目的，版权归原作者或者来源机构所有，如转载稿涉及版权问题，请联系我们！
 
-
-name
-URL
-
-
-
-
-Google
-
-
-
-YouTube
-YouTube
-
-
-
-
- 未选
- 选中
-
-markdown 基础语法第一级标题 &lt;h1&gt;第二级标题 &lt;h2&gt;第三级标题 &lt;h3&gt;第...
+...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2018/08/27/grammar/" title="markdown的语法">				
+							<a href="/2019/05/21/grammar/" title="markdown的语法">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/idea01.jpg" alt="markdown的语法">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/08/27/3/" title="markdown的语法3">
-								markdown的语法3			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 27日, 2018				
-							</p>
-							<p class="relate-post-content">
-								
-
-
-name
-URL
-
-
-
-
-Google
-
-
-
-YouTube
-YouTube
-
-
-
-
- 未选
- 选中
-
-markdown 基础语法第一级标题 &lt;h1&gt;第二级标题 &lt;h2&gt;第三级标题 &lt;h3&gt;第...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2018/08/27/3/" title="markdown的语法3">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/idea01.jpg" alt="markdown的语法3">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="markdown的语法">
 							</a>
 						</div>
 					</li>											
