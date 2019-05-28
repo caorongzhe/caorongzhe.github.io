@@ -16,7 +16,7 @@
       list 浅拷贝与深拷贝 | 一品烟雨
     
   </title>
-  <meta name="author" content="John Doe">
+  <meta name="author" content="曹荣哲">
   <meta name="keywords" content>
   <meta name="description" content>
 	<!-- favicon -->
@@ -293,7 +293,6 @@
 
 	<div class="article-content" id="article-content">
 		<p>&#8195;&#8195;众所周知，list本质上是数组，而数组的是以地址的形式进行存储。<br>&#8195;&#8195;将list A浅拷贝给list B，由于进行的是浅拷贝，所以直接将A的内容复制给了B，java中相同内容的数组指向同一地址，即进行浅拷贝后A与B指向同一地址。造成的后果就是，改变B的同时也会改变A，因为改变B就是改变B所指向地址的内容，由于A也指向同一地址，所以A与B一起改变。</p>
-<p><br></p>
 <h4 id="一、几种浅拷贝："><a href="#一、几种浅拷贝：" class="headerlink" title="一、几种浅拷贝："></a>一、几种浅拷贝：</h4><p>1、遍历循环复制<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; destList=<span class="keyword">new</span> ArrayList&lt;Person&gt;(srcList.size());</span><br><span class="line">	<span class="keyword">for</span>(Person p : srcList)&#123;</span><br><span class="line">	destList.add(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>2、使用List实现类的构造方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; destList=<span class="keyword">new</span> ArrayList&lt;Person&gt;(srcList);</span><br></pre></td></tr></table></figure></p>
 <p>3、使用list.addAll()方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; destList=<span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line">destList.addAll(srcList);</span><br></pre></td></tr></table></figure></p>
@@ -653,7 +652,7 @@
 	<div class="copyright">
 		<p>
 			 
-				&copy;2019, content by John Doe. All Rights Reserved.
+				&copy;2019, content by 曹荣哲. All Rights Reserved.
 			
 			
 			
