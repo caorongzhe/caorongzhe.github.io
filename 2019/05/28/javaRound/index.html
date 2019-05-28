@@ -1,0 +1,744 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      java的四舍五入 | 一品烟雨
+    
+  </title>
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="106" data-random-src="/img/random/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《java的四舍五入》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/05/28/javaRound/" itemprop="url">
+		java的四舍五入
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/05/28/javaRound/" itemprop="url">
+		<time datetime="2019-05-28T01:55:09.000Z" itemprop="datePublished">
+	  		2019-05-28
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/05/28/javaRound/" itemprop="url">
+		<time datetime="2019-05-28T01:55:09.000Z" itemprop="dateUpdated">
+	  		2019-05-28
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+			
+	
+		<a href="/tags/java基础/" class=" ">
+			java基础
+		</a>
+	
+		<a href="/tags/java特性/" class=" ">
+			java特性
+		</a>
+	
+		
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p>&#8195;&#8195;简介：四舍五入是一种精确度的计数保留法，与其他方法本质相同。但特殊之处在于，采用四舍五入，能使被保留部分的与实际值差值不超过最后一位数量级的二分之一：假如0～9等概率出现的话，对大量的被保留数据，这种保留法的误差总和是最小的。这也是我们使用这种方法为基本保留法的原因。</p>
+<h4 id="经典案例-："><a href="#经典案例-：" class="headerlink" title="经典案例 ："></a>经典案例 ：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"1.5的四舍五入值："</span> + Math.round(<span class="number">1.5</span>));</span><br><span class="line">    System.out.println(<span class="string">"1.4的四舍五入值："</span> + Math.round(<span class="number">1.4</span>));</span><br><span class="line">    System.out.println(<span class="string">"-1.5的四舍五入值："</span> + Math.round(-<span class="number">1.5</span>));</span><br><span class="line">    System.out.println(<span class="string">"-1.6的四舍五入值："</span> + Math.round(-<span class="number">1.6</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果-："><a href="#运行结果-：" class="headerlink" title="运行结果 ："></a>运行结果 ：</h4><blockquote>
+<p>1.5的四舍五入值：2<br>1.4的四舍五入值：1<br>-1.5的四舍五入值：-1<br>-1.6的四舍五入值：-2</p>
+</blockquote>
+<p>从上面的例子可以看出问题：正数和负数的绝对值是都是小于4取小，大于5取大，例如-1.6,按照负数他是小于4的。所以当两个绝对相等的数字用四舍五入有不等的可能性。在写代码中一般我们会用到Math.round()这个方法。除了这些还有什么别的四舍五入的方式以及方法。</p>
+<p>&#8195;&#8195;四舍五入其实在金融方面运用的非常多，尤其是银行的利息。我们都知道银行的盈利渠道主要是利息差，它从储户手里收集资金，然后放贷出去，期间产生的利息差就是银行所获得的利润。如果我们采用平常四舍五入的规则话，这里采用每10笔存款利息计算作为模型，如下：</p>
+<ul>
+<li>四舍：0.000、0.001、0.002、0.003、0.004。这些舍的都是银行赚的钱。</li>
+<li>五入：0.005、0.006、0.007、0.008、0.009。这些入的都是银行亏的钱，分别为：0.005、0.004、0.003、0.002、0.001。</li>
+</ul>
+<p><span style="font-size:13px;"> （说明一下：舍是指从给你的利息里面舍的，入是指你的利息大于0.005，银行就会补给你0.004的钱。） </span></p>
+<p>所以对于银行来说它的盈利应该是0.000 + 0.001 + 0.002 + 0.003 + 0.004 – (0.005 + 0.004 + 0.003 + 0.002 + 0.001) = -0.005。从结果中可以看出每10笔的利息银行可能就会损失0.005元，千万别小看这个数字，这对于银行来说就是一笔非常大的损失。面对这个问题就产生了如下的银行家涉入法了。该算法是由美国银行家提出了，主要用于修正采用上面四舍五入规则而产生的误差。如下：</p>
+<ul>
+<li>舍去位的数值小于5时，直接舍去。</li>
+<li>舍去位的数值大于5时，进位后舍去。 </li>
+<li>当舍去位的数值等于5时，若5后面还有其他非0数值，则进位后舍去，若5后面是0时，则根据5前一位数的奇偶性来判断，奇数进位，偶数舍去。</li>
+</ul>
+<h5 id="对于上面的规则我们举例说明"><a href="#对于上面的规则我们举例说明" class="headerlink" title="对于上面的规则我们举例说明"></a>对于上面的规则我们举例说明</h5><blockquote>
+<p>11.556 = 11.56      &#8195;&#8195;    –六入<br>11.554 = 11.55      &#8195;&#8195;    –四舍<br>11.5551 = 11.56     &#8195;&nbsp;&nbsp;  –五后有数进位<br>11.545 = 11.54      &#8195;&#8195;    –五后无数，若前位为偶数应舍去<br>11.555 = 11.56      &#8195;&#8195;    –五后无数，若前位为奇数应进位</p>
+</blockquote>
+<h4 id="经典案例-：-1"><a href="#经典案例-：-1" class="headerlink" title="经典案例 ："></a>经典案例 ：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//BigDecimal 为了不丢失精度，设计到金额计算的几乎都再用这个类</span></span><br><span class="line">    BigDecimal c = <span class="keyword">new</span> BigDecimal(<span class="number">100000</span>);      <span class="comment">//存款</span></span><br><span class="line">    BigDecimal l = <span class="keyword">new</span> BigDecimal(<span class="number">0.002019</span>*<span class="number">3</span>);   <span class="comment">//利息</span></span><br><span class="line">    BigDecimal i = c.multiply(l).setScale(<span class="number">2</span>, RoundingMode.HALF_EVEN);     <span class="comment">//使用银行家算法</span></span><br><span class="line">    System.out.println(<span class="string">"一季度的利息是："</span>+i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果-：-1"><a href="#运行结果-：-1" class="headerlink" title="运行结果 ："></a>运行结果 ：</h4><blockquote>
+<p>一季度的利息是：605.70元</p>
+</blockquote>
+<h4 id="代码解释："><a href="#代码解释：" class="headerlink" title="代码解释："></a>代码解释：</h4><p>Java在java.math包中提供的API类BigDecimal，用来对超过16位有效位的数进行精确的运算。双精度浮点型变量double可以处理16位有效数。在实际应用中，需要对更大或者更小的数进行运算和处理。float和double只能用来做科学计算或者是工程计算，在商业计算中要用java.math.BigDecimal。BigDecimal所创建的是对象，我们不能使用传统的+、-、 *、/等算术运算符直接对其对象进行数学运算，而必须调用其相对应的方法。方法中的参数也必须是BigDecimal的对象。构造器是类的特殊方法，专门用来创建对象，特别是带有参数的对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> BigDecimal <span class="title">multiply</span><span class="params">(BigDecimal multiplicand)</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">参数: </span></span><br><span class="line"><span class="function">	multiplicand - 通过此BigDecimal相乘的值</span></span><br><span class="line"><span class="function">返回值:</span></span><br><span class="line"><span class="function">	此方法返回一个BigDecimal，其的值为<span class="keyword">this</span> * multiplicand</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> BigDecimal setScale​(<span class="keyword">int</span> newScale)</span><br><span class="line"><span class="keyword">public</span> BigDecimal setScale​(<span class="keyword">int</span> newScale,<span class="keyword">int</span> roundingMode)</span><br><span class="line"><span class="comment">//例子</span></span><br><span class="line">setScale(<span class="number">1</span>)表示保留一位小数，默认用四舍五入方式 </span><br><span class="line">setScale(<span class="number">1</span>,BigDecimal.ROUND_DOWN)直接删除多余的小数位，如<span class="number">2.35</span>会变成<span class="number">2.3</span> </span><br></pre></td></tr></table></figure>
+<p>除了支持 BigDecimal.ROUND_DOWN 意外，还支持：</p>
+<ul>
+<li>1、 ROUND_UP：远离零方向舍入。向绝对值最大的方向舍入，只要舍弃位非0即进位。</li>
+<li>2、 ROUND_DOWN：趋向零方向舍入。向绝对值最小的方向输入，所有的位都要舍弃，不存在进位情况。</li>
+<li>3、 ROUND_CEILING：向正无穷方向舍入。向正最大方向靠拢。若是正数，舍入行为类似于ROUND_UP，若为负数，舍入行为类似于ROUND_DOWN。Math.round()方法就是使用的此模式。</li>
+<li>4、 ROUND_FLOOR：向负无穷方向舍入。向负无穷方向靠拢。若是正数，舍入行为类似于ROUND_DOWN；若为负数，舍入行为类似于ROUND_UP。</li>
+<li>5、 HALF_UP：最近数字舍入(5进)。这是我们最经典的四舍五入。</li>
+<li>6、 HALF_DOWN：最近数字舍入(5舍)。在这里5是要舍弃的。</li>
+<li>7、 HAIL_EVEN：银行家舍入法。</li>
+</ul>
+<h4 id="关于保留位"><a href="#关于保留位" class="headerlink" title="关于保留位"></a>关于保留位</h4><h5 id="方法一：四舍五入"><a href="#方法一：四舍五入" class="headerlink" title="方法一：四舍五入"></a>方法一：四舍五入</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span>   f   =   <span class="number">111231.5585</span>;</span><br><span class="line">BigDecimal   b   =   <span class="keyword">new</span>   BigDecimal(f);</span><br><span class="line"><span class="keyword">double</span>   f1   =   b.setScale(<span class="number">2</span>,   RoundingMode.HALF_UP).doubleValue();</span><br></pre></td></tr></table></figure>
+<h5 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java.text.DecimalFormat   df   =new   java.text.DecimalFormat(”#.00″);</span><br><span class="line">df.format(你要格式化的数字);</span><br></pre></td></tr></table></figure>
+<h5 id="方式三："><a href="#方式三：" class="headerlink" title="方式三："></a>方式三：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> d = <span class="number">3.1415926</span>;</span><br><span class="line"><span class="comment">// %.2f %. 表示 小数点前任意位数 2 表示两位小数 格式后的结果为f 表示浮点型。</span></span><br><span class="line">String result = String .format(”%.<span class="number">2f</span>”);</span><br></pre></td></tr></table></figure>
+<p><br><br><br></p>
+<blockquote>
+<p>参考出处：<a href="http://cmsblogs.com/" target="_blank" rel="noopener">http://cmsblogs.com/</a> 『chenssy』</p>
+</blockquote>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/random/12.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+		
+			<a href="/2019/05/27/ThreeFeaturesOfJava/" title="java的三大特性" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/05/27/ThreeFeaturesOfJava/" title="java的三大特性">
+								java的三大特性			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 27日, 2019				
+							</p>
+							<p class="relate-post-content">
+								&#8195;&#8195;简介：封装、继承、多态。从一定角度来看，封装和继承几乎都是为多态而准备的。这是我们最后一个概念，也是最重要的知识点。
+
+参考出处：http://cmsblogs.com/ 『chenssy』
+
+三大特性之封...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/05/27/ThreeFeaturesOfJava/" title="java的三大特性">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/random/3.jpg" alt="java的三大特性">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/05/27/JavaBASE64/" title="Java 之 BASE64 加密解密">
+								Java 之 BASE64 加密解密			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 27日, 2019				
+							</p>
+							<p class="relate-post-content">
+								Java之BASE64加密解密&#8195;&#8195;在给邮件发送 URL 链接找回密码时，会发送一个链接，像这样 http://localhost:8080/resetpass?sid=c1b55b980db4eb74a4264...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/05/27/JavaBASE64/" title="Java 之 BASE64 加密解密">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="Java 之 BASE64 加密解密">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/05/21/grammar/" title="markdown的语法">
+								markdown的语法			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 21日, 2019				
+							</p>
+							<p class="relate-post-content">
+								这是一个写文章的格式案例和markdown的语法，不用点开。你要是点开了，没关系，那就关上呗。哈哈哈 ！！！
+本站部分资源来源于网络，本站转载出于传递更多信息之目的，版权归原作者或者来源机构所有，如转载稿涉及版权问题，请联系我们！
+
+...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/05/21/grammar/" title="markdown的语法">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="markdown的语法">
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2019, content by John Doe. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>
